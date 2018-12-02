@@ -47,7 +47,6 @@ int main() {
          cout << ex.getMessage() << endl;
       }
    }
-   for (;;);
    return 0;
 }
 
