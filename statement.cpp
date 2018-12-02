@@ -206,7 +206,6 @@ void DirectlyExecutedStatement::execute(EvalState &state)
 				cout << " ? ";
 				for (char ch = getchar(); ch != '\n'; ch = getchar()) val += ch;
 				stringToInteger(val);
-				cout << val;
 				break;
 			}
 			catch (...)
