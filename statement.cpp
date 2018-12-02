@@ -174,7 +174,7 @@ int ControlStatement::getNextLine(EvalState &state)
 
 DirectlyExecutedStatement::DirectlyExecutedStatement(string &_line) : Statement(_line), exp(nullptr)
 {
-	string identifier = line.substr(0, line.find(" ") + 1);
+	string identifier = line.substr(0, line.find(" "));
 	statement = line.substr(line.find(" ") + 1, line.length() - line.find(" ") - 1);
 
 	if (identifier == "LET") ty = 1;
