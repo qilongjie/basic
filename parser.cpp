@@ -66,10 +66,10 @@ Expression *readT(TokenScanner & scanner) {
    TokenType type = scanner.getTokenType(token);
    if (type == WORD) return new IdentifierExp(token);
    if (type == NUMBER) return new ConstantExp(stringToInteger(token));
-   if (token != "(") error("SYNTAX ERROR");
+   if (token != "(") error("SYNTAX ERROR1");
    Expression *exp = readE(scanner);
    if (scanner.nextToken() != ")") {
-	   error("SYNTAX ERROR");
+	   error("SYNTAX ERROR2");
    }
    return exp;
 }
