@@ -50,7 +50,7 @@ SequentialStatement::SequentialStatement(string &_line) : Statement(_line), term
 	else if (identifier == "PRINT") ty = 3;
 	else if (identifier == "INPUT") ty = 4;
 	else if (identifier == "END") ty = 5;
-	else { cout << ty <<" ";error("SYNTAX ERROR"); }
+	else { error("SYNTAX ERROR"); }
 }
 
 /*
@@ -206,6 +206,7 @@ void DirectlyExecutedStatement::execute(EvalState &state)
 				cout << " ? ";
 				for (char ch = getchar(); ch != '\n'; ch = getchar()) val += ch;
 				stringToInteger(val);
+				cout << val;
 				break;
 			}
 			catch (...)
