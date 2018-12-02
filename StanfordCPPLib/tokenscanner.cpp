@@ -90,6 +90,15 @@ string TokenScanner::nextToken() {
          isp->unget();
          return scanNumber();
       }
+	  if (ch == '-')
+	  {
+		  int nxt = isp->get();
+		  if (isdigit(nxt))
+		  {
+			  isp->unget();
+			  return "-" + scanNumber();
+		  }
+	  }
       if (isWordCharacter(ch)) {
          isp->unget();
          return scanWord();
@@ -170,6 +179,7 @@ TokenType TokenScanner::getTokenType(string token) const {
    if (isspace(ch)) return SEPARATOR;
    if (ch == '"' || (ch == '\'' && token.length() > 1)) return STRING;
    if (isdigit(ch)) return NUMBER;
+   if (ch == '-' && isdigit(token[1])) return NUMBER;
    if (isWordCharacter(ch)) return WORD;
    return OPERATOR;
 };
