@@ -75,7 +75,7 @@ ResultType processLine(string line, Program & program, EvalState & state) {
 		{
 			int linenumber = stringToInteger(line.substr(0, p));
 			if (p == string::npos) program.removeSourceLine(linenumber);
-			program.addSourceLine(linenumber, line);
+			else program.addSourceLine(linenumber, line);
 		}
 		else //Direct
 			program.addSourceLine(0, line);
