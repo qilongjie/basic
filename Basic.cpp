@@ -44,9 +44,10 @@ int main() {
 		  }
 		  if (t == EXECUTED) continue;
       } catch (ErrorException & ex) {
-         cerr << "Error: " << ex.getMessage() << endl;
+         cout << ex.getMessage() << endl;
       }
    }
+   for (;;);
    return 0;
 }
 
@@ -70,10 +71,11 @@ ResultType processLine(string line, Program & program, EvalState & state) {
 	if (current == COMMAND) return program.runCommand(line);
 	else
 	{
+		size_t p = line.find(" ");
 		if (line[0] >= 48 && line[0] <= 57) //linenumber
 		{
-			int linenumber = stringToInteger(line.substr(0, line.find(" ")));
-			if (line.find(" ") == string::npos) program.removeSourceLine(linenumber);
+			int linenumber = stringToInteger(line.substr(0, p));
+			if (p == string::npos) program.removeSourceLine(linenumber);
 			program.addSourceLine(linenumber, line);
 		}
 		else //Direct
