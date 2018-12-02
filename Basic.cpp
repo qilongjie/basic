@@ -64,7 +64,7 @@ int main() {
  */
 
 ResultType processLine(string line, Program & program, EvalState & state) {
-	for (;line.length() && line[line.length() - 1] == ' ';) line = line.substr(0, line.length() - 2);
+	for (;line[line.length() - 1] == ' ';) line = line.substr(0, line.length() - 2);
 	if (line.length() == 0) return EXECUTED;
 	StatementType current = analyzeStatement(line);
 	if (current == COMMAND) return program.runCommand(line);
