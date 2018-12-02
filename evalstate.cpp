@@ -22,14 +22,17 @@ EvalState::~EvalState() {
    /* Empty */
 }
 
+bool EvalState::isDefined(string var) {
+   return symbolTable.containsKey(var);
+}
+
 void EvalState::setValue(string var, int value) {
-   symbolTable.put(var, value);
+   if (isDefined(var)) symbolTable.put(var, value);
+   else error("SYNTAX ERROR");
 }
 
 int EvalState::getValue(string var) {
    return symbolTable.get(var);
 }
 
-bool EvalState::isDefined(string var) {
-   return symbolTable.containsKey(var);
-}
+
